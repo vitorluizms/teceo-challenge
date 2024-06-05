@@ -46,6 +46,10 @@ export default {
       colors: {
         'gray-8C8C8C': '#8C8C8C',
         'gray-FAFAFA': '#FAFAFA',
+        'column-text': '#5c6b77',
+        'green-watching': '#4CAF50',
+        'blue-queue': '#2196F3',
+        'purple-finished': '#9C27B0',
       },
     },
   },

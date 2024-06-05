@@ -8,7 +8,7 @@ import { twMerge } from 'tailwind-merge'
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline'
 import PopoverOptionsContent from '../../Common/Popover'
 
-function ItemComponent({ index, style, animesData }: { index: number; style: any; animesData: IAnimeData[] }) {
+function AnimePreview({ index, style, animesData }: { index: number; style: any; animesData: IAnimeData[] }) {
   const { id, name, episodes, genre, status } = animesData[index]
   const { animesToRemove } = useContext(AnimeContext)
   const { handleToggleAnimeToRemove } = useManageAnimeIdsToRemove()
@@ -64,4 +64,4 @@ function ItemComponent({ index, style, animesData }: { index: number; style: any
   )
 }
 
-export default ItemComponent
+export default AnimePreview

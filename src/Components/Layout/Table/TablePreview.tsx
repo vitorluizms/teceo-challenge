@@ -1,5 +1,4 @@
 import { useContext, useEffect } from 'react'
-import ItemComponent from './ItemComponent'
 import { AnimeContext, IAnimeContextState } from '../../../Context/animeListContext'
 import { FixedSizeList as List } from 'react-window'
 import { useWindowSize } from 'react-use'
@@ -7,19 +6,20 @@ import { Checkbox } from 'antd'
 import { CheckboxChangeEvent } from 'antd/es/checkbox'
 import useManageAnimeIdsToRemove from '../../../hooks/useHandleIdsToRemove'
 import { IAnimeData } from '../../../Types/animesType'
+import AnimePreview from './AnimePreview'
 
-function Table({ data }: { data?: IAnimeData[] }) {
+function TablePreview({ data }: { data: IAnimeData[] }) {
   const { animeList, animesToRemove, inputSearch, baseAnimesList, setAnimeList } =
     useContext<IAnimeContextState>(AnimeContext)
   const { handleToggleAllAnimes } = useManageAnimeIdsToRemove()
 
-  const itemCount = animeList.length
+  const itemCount = animesToRemove.length
   const { width, height } = useWindowSize()
   const itemSize = width < 760 ? 70 : 50
   const columnWidths = [2 / 5, 1 / 5, 1 / 5, 1 / 5]
 
   const Cell = ({ index, style }: { index: number; style: any }) => {
-    return <ItemComponent animesData={data ? data : animeList} index={index} style={style} />
+    return <AnimePreview animesData={data} index={index} style={style} />
   }
 
   useEffect(() => {
@@ -79,4 +79,4 @@ function Table({ data }: { data?: IAnimeData[] }) {
   )
 }
 
-export default Table
+export default TablePreview

@@ -9,7 +9,7 @@ function ButtonDelete() {
   return (
     <Button
       icon={<TrashIcon className="w-[14px]" />}
-      size="middle"
+      size="large"
       danger
       type="primary"
       onClick={() => {
