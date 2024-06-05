@@ -1,19 +1,23 @@
-import React, { useState } from 'react'
-import { AnimeData } from '../Types/animesType'
+import React, { Dispatch, SetStateAction, useState } from 'react'
+import { IAnimeData } from '../Types/animesType'
 
 export interface IAnimeContextState {
-  animeList: AnimeData[]
-  setAnimeList: (newAnimeList: AnimeData[]) => void
+  animeList: IAnimeData[]
+  setAnimeList: Dispatch<SetStateAction<IAnimeData[]>>
+  animesToRemove: IAnimeData[]
+  setAnimesToRemove: Dispatch<SetStateAction<IAnimeData[]>>
 }
 
 export const AnimeContext = React.createContext<IAnimeContextState>({
   animeList: [],
   setAnimeList: () => {},
+  animesToRemove: [],
+  setAnimesToRemove: () => {},
 })
 
-const generateAnimes = (): AnimeData[] => {
-  const animesArray: AnimeData[] = []
-  const animesNames: Omit<AnimeData, 'id'>[] = [
+const generateAnimes = (): IAnimeData[] => {
+  const animesArray: IAnimeData[] = []
+  const animesNames: Omit<IAnimeData, 'id'>[] = [
     { name: 'Shingeki no Kyojin', episodes: 87, genre: 'Ação, Fantasia', status: 'Finished' },
     { name: 'One Piece', episodes: 1107, genre: 'Ação, Aventura, Fantasia', status: 'Watching' },
     { name: 'Haikyuu', episodes: 86, genre: 'Colegial, Esportes', status: 'Finished' },
@@ -33,7 +37,12 @@ const generateAnimes = (): AnimeData[] => {
 }
 
 export default function AnimeProvider({ children }: { children?: React.ReactNode }) {
-  const [animeList, setAnimeList] = useState<AnimeData[]>(generateAnimes())
+  const [animeList, setAnimeList] = useState<IAnimeData[]>(generateAnimes())
+  const [animesToRemove, setAnimesToRemove] = useState<IAnimeData[]>([])
 
-  return <AnimeContext.Provider value={{ animeList, setAnimeList }}>{children}</AnimeContext.Provider>
+  return (
+    <AnimeContext.Provider value={{ animeList, setAnimeList, animesToRemove, setAnimesToRemove }}>
+      {children}
+    </AnimeContext.Provider>
+  )
 }

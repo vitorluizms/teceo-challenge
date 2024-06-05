@@ -1,4 +1,4 @@
-export interface AnimeData {
+export interface IAnimeData {
   id: number
   name: string
   episodes: number
