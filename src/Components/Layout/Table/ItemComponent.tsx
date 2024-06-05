@@ -1,4 +1,4 @@
-import { Checkbox, Popover } from 'antd'
+import { Badge, Checkbox, Popover } from 'antd'
 import { IAnimeData } from '../../../Types/animesType'
 import { CheckboxChangeEvent } from 'antd/es/checkbox'
 import { useContext, useState } from 'react'
@@ -20,6 +20,12 @@ function ItemComponent({ index, style, animesData }: { index: number; style: any
     Finished: 'Assistido',
   }
 
+  const badgeStatusColors = {
+    Watching: '#4CAF50',
+    QUEUE: '#2196F3',
+    Finished: '#9C27B0',
+  }
+
   return (
     <div style={{ ...style }} className={twMerge('flex w-full', index !== animesData.length - 1 && 'border-b')}>
       <div className="w-2/5 p-3 text-left text-p flex items-center">
@@ -35,8 +41,7 @@ function ItemComponent({ index, style, animesData }: { index: number; style: any
       <div className="w-1/5 p-3 text-left text-p flex items-center">{genre}</div>
       <div className="w-1/5 p-3 text-left text-p flex items-center justify-center">{episodes}</div>
       <div className="w-1/5 p-3 text-left text-p flex items-center justify-between">
-        {statusTranslated[status]}
-
+        <Badge color={badgeStatusColors[status]} text={statusTranslated[status]}></Badge>
         <Popover
           placement="bottomLeft"
           trigger="click"

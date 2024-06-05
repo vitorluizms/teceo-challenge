@@ -13,7 +13,8 @@ function Table({ data }: { data?: IAnimeData[] }) {
   const { handleToggleAllAnimes } = useManageAnimeIdsToRemove()
 
   const itemCount = animeList.length
-  const { height } = useWindowSize()
+  const { width, height } = useWindowSize()
+  const itemSize = width < 760 ? 70 : 50
   const columnWidths = [2 / 5, 1 / 5, 1 / 5, 1 / 5]
 
   const Cell = ({ index, style }: { index: number; style: any }) => {
@@ -21,7 +22,7 @@ function Table({ data }: { data?: IAnimeData[] }) {
   }
 
   return (
-    <div className="w-full my-5 border-separate border-spacing-0 border rounded-lg overflow-hidden">
+    <div className="w-full min-w-[650px] my-5 border-separate border-spacing-0 border rounded-lg overflow-hidden">
       <div className="bg-gray-FAFAFA rounded-t-lg">
         <div className="flex">
           <div
@@ -53,12 +54,12 @@ function Table({ data }: { data?: IAnimeData[] }) {
             className="border-b p-3 text-left text-h3 flex items-center text-column-text"
             style={{ width: `${columnWidths[3] * 100}%` }}
           >
-            <span className="block w-full border-r-2">Status</span>
+            <span>Status</span>
           </div>
         </div>
       </div>
       <div>
-        <List width={'100%'} height={height} itemCount={itemCount} itemSize={50} className="overflow-auto">
+        <List width={'100%'} height={height - 250} itemCount={itemCount} itemSize={itemSize} className="overflow-auto">
           {Cell}
         </List>
       </div>
