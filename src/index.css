@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-white transition-all ease-linear duration-200;
+  box-sizing: border-box;
+}
+
+.table-column-name {
+  width: 40%;
+}
+
+.table-column-genre {
+  width: 20%;
+}
+
+.table-column-episodes {
+  width: 20%;
+}
+
+.table-column-status {
+  width: 20%;
+}
