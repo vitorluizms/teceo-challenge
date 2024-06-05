@@ -1,9 +1,20 @@
-function App() {
+import { useState } from 'react'
+import { Layout } from './Components/Layout'
+import Table from './Components/Layout/Table'
+import AnimeProvider from './Context/animeListContext'
+import PreviewDeleteModal from './Components/Modal/PreviewDeleteModal'
 
+function App() {
   return (
-    <div className="flex justify-center bg-sky-500">
-      testew
-    </div>
+    <AnimeProvider>
+      <Layout.Container>
+        <PreviewDeleteModal />
+        <Layout.Header />
+        <Layout.Main>
+          <Table />
+        </Layout.Main>
+      </Layout.Container>
+    </AnimeProvider>
   )
 }
 
