@@ -46,6 +46,7 @@ export default {
       colors: {
         'gray-8C8C8C': '#8C8C8C',
         'gray-FAFAFA': '#FAFAFA',
+        'column-text': '#5c6b77',
       },
     },
   },

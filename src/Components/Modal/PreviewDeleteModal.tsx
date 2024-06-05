@@ -9,7 +9,6 @@ function PreviewDeleteModal() {
   const { width } = useWindowSize()
   const { isModalOpen, setIsModalOpen } = useContext(AnimeContext)
   const { removeAnimesByIds } = useRemoveAnime()
-  console.log(open)
 
   return (
     <Modal

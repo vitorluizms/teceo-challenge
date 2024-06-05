@@ -25,7 +25,7 @@ function Table({ data }: { data?: IAnimeData[] }) {
       <div className="bg-gray-FAFAFA rounded-t-lg">
         <div className="flex">
           <div
-            className="border-b p-3 text-left text-h3 flex items-center"
+            className="border-b p-3 text-left text-h3 flex items-center text-column-text"
             style={{ width: `${columnWidths[0] * 100}%` }}
           >
             <Checkbox
@@ -38,22 +38,22 @@ function Table({ data }: { data?: IAnimeData[] }) {
             <span className="block w-full border-r-2">Nome</span>
           </div>
           <div
-            className="border-b p-3 text-left text-h3 flex items-center"
+            className="border-b p-3 text-left text-h3 flex items-center text-column-text"
             style={{ width: `${columnWidths[1] * 100}%` }}
           >
             <span className="block w-full border-r-2">Gênero</span>
           </div>
           <div
-            className="border-b p-3 text-left text-h3 flex items-center"
+            className="border-b p-3 text-left text-h3 flex items-center text-column-text"
             style={{ width: `${columnWidths[2] * 100}%` }}
           >
             <span className="flex justify-center  w-full border-r-2">Episódios</span>
           </div>
           <div
-            className="border-b p-3 text-left text-h3 flex items-center"
+            className="border-b p-3 text-left text-h3 flex items-center text-column-text"
             style={{ width: `${columnWidths[3] * 100}%` }}
           >
-            <span className="">Status</span>
+            <span className="block w-full border-r-2">Status</span>
           </div>
         </div>
       </div>

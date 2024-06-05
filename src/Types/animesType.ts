@@ -3,5 +3,7 @@ export interface IAnimeData {
   name: string
   episodes: number
   genre: string
-  status: 'Watching' | 'Finished' | 'QUEUE'
+  status: IAnimeStatus
 }
+
+export type IAnimeStatus = 'Watching' | 'Finished' | 'QUEUE'
