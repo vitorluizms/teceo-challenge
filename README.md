@@ -1,19 +1,23 @@
-# 📺 MyAniList
+## 📺 MyAniList
 
 Este é um projeto de lista de gerenciamento de animes onde você pode excluir individualmente, em massa, alterar o status e pesquisar animes pelo nome.
 
-# 👤 Autor
+## 👤 Autor
 
 - [@vitorluizms](https://www.github.com/vitorluizms)
 
-# 💻 Pré-requisitos
+## 🌐 Deploy
+
+[Link do deploy](https://teceo-challenge.vercel.app)
+
+## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 Node.js: v18.16.1 (Utilizado no desenvolvimento);
 NPM: v9.5.1 (Utilizado no desenvolvimento);
 
-# 🚀 Instalação
+## 🚀 Instalação
 
 Para instalar o MyAniList, siga estas etapas:
 
@@ -21,7 +25,7 @@ Para instalar o MyAniList, siga estas etapas:
 2. Acesse o diretório do projeto: `cd MyAnimeList`;
 3. Instale as dependências: `npm install ou npm i`.
 
-# 🔧 Tecnologias
+## 🔧 Tecnologias
 
 Para a construção do projeto foi utilizado as seguintes tecnologias:
 
@@ -38,7 +42,7 @@ Para a construção do projeto foi utilizado as seguintes tecnologias:
 - GitHub (versionamento de código);
 -
 
-# 📏 Padronização
+## 📏 Padronização
 
 Neste projeto foi utilizado:
 
@@ -46,7 +50,7 @@ Neste projeto foi utilizado:
 - Prettier para autoformatação do código
 - Husky para validar e padronizar os commits;
 
-# ☕ Execução
+## ☕ Execução
 
 Para usar, siga estas etapas:
 
