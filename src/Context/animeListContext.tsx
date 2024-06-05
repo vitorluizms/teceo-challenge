@@ -6,6 +6,8 @@ export interface IAnimeContextState {
   setAnimeList: Dispatch<SetStateAction<IAnimeData[]>>
   animesToRemove: IAnimeData[]
   setAnimesToRemove: Dispatch<SetStateAction<IAnimeData[]>>
+  isModalOpen: boolean
+  setIsModalOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export const AnimeContext = React.createContext<IAnimeContextState>({
@@ -13,6 +15,8 @@ export const AnimeContext = React.createContext<IAnimeContextState>({
   setAnimeList: () => {},
   animesToRemove: [],
   setAnimesToRemove: () => {},
+  isModalOpen: false,
+  setIsModalOpen: () => {},
 })
 
 const generateAnimes = (): IAnimeData[] => {
@@ -39,9 +43,12 @@ const generateAnimes = (): IAnimeData[] => {
 export default function AnimeProvider({ children }: { children?: React.ReactNode }) {
   const [animeList, setAnimeList] = useState<IAnimeData[]>(generateAnimes())
   const [animesToRemove, setAnimesToRemove] = useState<IAnimeData[]>([])
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
   return (
-    <AnimeContext.Provider value={{ animeList, setAnimeList, animesToRemove, setAnimesToRemove }}>
+    <AnimeContext.Provider
+      value={{ animeList, setAnimeList, animesToRemove, setAnimesToRemove, isModalOpen, setIsModalOpen }}
+    >
       {children}
     </AnimeContext.Provider>
   )

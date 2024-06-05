@@ -6,8 +6,9 @@ import { useWindowSize } from 'react-use'
 import { Checkbox } from 'antd'
 import { CheckboxChangeEvent } from 'antd/es/checkbox'
 import useManageAnimeIdsToRemove from '../../../hooks/useHandleIdsToRemove'
+import { IAnimeData } from '../../../Types/animesType'
 
-function Table() {
+function Table({ data }: { data?: IAnimeData[] }) {
   const { animeList, animesToRemove } = useContext<IAnimeContextState>(AnimeContext)
   const { handleToggleAllAnimes } = useManageAnimeIdsToRemove()
 
@@ -16,7 +17,7 @@ function Table() {
   const columnWidths = [2 / 5, 1 / 5, 1 / 5, 1 / 5]
 
   const Cell = ({ index, style }: { index: number; style: any }) => {
-    return <ItemComponent animesData={animeList} index={index} style={style} />
+    return <ItemComponent animesData={data ? data : animeList} index={index} style={style} />
   }
 
   return (
@@ -29,7 +30,9 @@ function Table() {
           >
             <Checkbox
               checked={animeList.length === animesToRemove.length && animeList.length !== 0}
-              onChange={(e: CheckboxChangeEvent) => handleToggleAllAnimes(e)}
+              onChange={(e: CheckboxChangeEvent) => {
+                handleToggleAllAnimes(e)
+              }}
               className="mr-2"
             />
             <span className="block w-full border-r-2">Nome</span>
@@ -44,7 +47,7 @@ function Table() {
             className="border-b p-3 text-left text-h3 flex items-center"
             style={{ width: `${columnWidths[2] * 100}%` }}
           >
-            <span className="block w-full border-r-2">Episódios</span>
+            <span className="flex justify-center  w-full border-r-2">Episódios</span>
           </div>
           <div
             className="border-b p-3 text-left text-h3 flex items-center"
@@ -55,7 +58,7 @@ function Table() {
         </div>
       </div>
       <div>
-        <List width={'100%'} height={height} itemCount={itemCount} itemSize={35} className="overflow-auto">
+        <List width={'100%'} height={height} itemCount={itemCount} itemSize={50} className="overflow-auto">
           {Cell}
         </List>
       </div>

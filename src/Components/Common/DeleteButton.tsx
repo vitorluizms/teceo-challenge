@@ -2,11 +2,9 @@ import { TrashIcon } from '@heroicons/react/24/outline'
 import { Button } from 'antd'
 import { useContext } from 'react'
 import { AnimeContext } from '../../Context/animeListContext'
-import useRemoveAnime from '../../hooks/useGroupDelete'
 
 function ButtonDelete() {
-  const { animesToRemove } = useContext(AnimeContext)
-  const { removeAnimesByIds } = useRemoveAnime()
+  const { animesToRemove, setIsModalOpen } = useContext(AnimeContext)
 
   return (
     <Button
@@ -14,7 +12,9 @@ function ButtonDelete() {
       size="middle"
       danger
       type="primary"
-      onClick={() => removeAnimesByIds(animesToRemove)}
+      onClick={() => {
+        setIsModalOpen(true)
+      }}
       title="Excluir selecionados"
       disabled={animesToRemove.length <= 0}
       className="text-[14px] flex items-center justify-center"
