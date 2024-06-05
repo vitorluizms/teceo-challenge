@@ -1,13 +1,13 @@
 import { Modal } from 'antd'
-import Table from '../Layout/Table'
 import { useWindowSize } from 'react-use'
 import { useContext } from 'react'
 import { AnimeContext } from '../../Context/animeListContext'
 import useRemoveAnime from '../../hooks/useGroupDelete'
+import TablePreview from '../Layout/Table/TablePreview'
 
 function PreviewDeleteModal() {
   const { width } = useWindowSize()
-  const { isModalOpen, setIsModalOpen } = useContext(AnimeContext)
+  const { isModalOpen, setIsModalOpen, animesToRemove } = useContext(AnimeContext)
   const { removeAnimesByIds } = useRemoveAnime()
 
   return (
@@ -25,7 +25,7 @@ function PreviewDeleteModal() {
       title="Revise os animes para excluir"
       closable={true}
     >
-      <Table />
+      <TablePreview data={animesToRemove} />
     </Modal>
   )
 }
