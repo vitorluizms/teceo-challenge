@@ -2,6 +2,9 @@ import ButtonDelete from '../../Common/DeleteButton'
 import { ChangeEvent, useContext } from 'react'
 import { AnimeContext } from '../../../Context/animeListContext'
 import Search, { SearchProps } from 'antd/es/input/Search'
+import { Popover } from 'antd'
+import FilterButton from './FilterButton'
+import StatusSelect from '../../Common/PopoverFilterStatus'
 
 function LayoutHeader() {
   const { setInputSearch } = useContext(AnimeContext)
@@ -39,6 +42,9 @@ function LayoutHeader() {
           onSearch={onSearch}
           onChange={onChange}
         />
+        <Popover placement="bottomLeft" trigger="click" title="Filtrar por status" content={<StatusSelect />}>
+          <FilterButton />
+        </Popover>
         <ButtonDelete />
       </section>
     </header>

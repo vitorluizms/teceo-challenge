@@ -3,12 +3,13 @@ import { AnimeContext } from '../Context/animeListContext'
 import { IAnimeData } from '../Types/animesType'
 
 const useRemoveAnime = () => {
-  const { setAnimeList, setAnimesToRemove, animesToRemove } = useContext(AnimeContext)
+  const { setAnimeList, setAnimesToRemove, setBaseAnimesList, animesToRemove } = useContext(AnimeContext)
 
   const removeAnimesByIds = () => {
     const idsToRemoveSet = new Set(animesToRemove.map(anime => anime.id))
 
     setAnimeList((prevList: IAnimeData[]) => prevList.filter(anime => !idsToRemoveSet.has(anime.id)))
+    setBaseAnimesList((prevList: IAnimeData[]) => prevList.filter(anime => !idsToRemoveSet.has(anime.id)))
     setAnimesToRemove([])
   }
 
