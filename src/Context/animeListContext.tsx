@@ -8,6 +8,10 @@ export interface IAnimeContextState {
   setAnimesToRemove: Dispatch<SetStateAction<IAnimeData[]>>
   isModalOpen: boolean
   setIsModalOpen: Dispatch<SetStateAction<boolean>>
+  inputSearch: string
+  setInputSearch: Dispatch<SetStateAction<string>>
+  baseAnimesList: IAnimeData[]
+  setBaseAnimesList: Dispatch<SetStateAction<IAnimeData[]>>
 }
 
 export const AnimeContext = React.createContext<IAnimeContextState>({
@@ -17,6 +21,10 @@ export const AnimeContext = React.createContext<IAnimeContextState>({
   setAnimesToRemove: () => {},
   isModalOpen: false,
   setIsModalOpen: () => {},
+  inputSearch: '',
+  setInputSearch: () => {},
+  baseAnimesList: [],
+  setBaseAnimesList: () => {},
 })
 
 const generateAnimes = (): IAnimeData[] => {
@@ -41,13 +49,26 @@ const generateAnimes = (): IAnimeData[] => {
 }
 
 export default function AnimeProvider({ children }: { children?: React.ReactNode }) {
-  const [animeList, setAnimeList] = useState<IAnimeData[]>(generateAnimes())
+  const [baseAnimesList, setBaseAnimesList] = useState<IAnimeData[]>(generateAnimes())
+  const [animeList, setAnimeList] = useState<IAnimeData[]>(baseAnimesList)
   const [animesToRemove, setAnimesToRemove] = useState<IAnimeData[]>([])
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [inputSearch, setInputSearch] = useState('')
 
   return (
     <AnimeContext.Provider
-      value={{ animeList, setAnimeList, animesToRemove, setAnimesToRemove, isModalOpen, setIsModalOpen }}
+      value={{
+        animeList,
+        setAnimeList,
+        animesToRemove,
+        setAnimesToRemove,
+        isModalOpen,
+        setIsModalOpen,
+        inputSearch,
+        setInputSearch,
+        baseAnimesList,
+        setBaseAnimesList,
+      }}
     >
       {children}
     </AnimeContext.Provider>

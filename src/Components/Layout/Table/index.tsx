@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import ItemComponent from './ItemComponent'
 import { AnimeContext, IAnimeContextState } from '../../../Context/animeListContext'
 import { FixedSizeList as List } from 'react-window'
@@ -9,7 +9,8 @@ import useManageAnimeIdsToRemove from '../../../hooks/useHandleIdsToRemove'
 import { IAnimeData } from '../../../Types/animesType'
 
 function Table({ data }: { data?: IAnimeData[] }) {
-  const { animeList, animesToRemove } = useContext<IAnimeContextState>(AnimeContext)
+  const { animeList, animesToRemove, inputSearch, baseAnimesList, setAnimeList } =
+    useContext<IAnimeContextState>(AnimeContext)
   const { handleToggleAllAnimes } = useManageAnimeIdsToRemove()
 
   const itemCount = animeList.length
@@ -20,6 +21,17 @@ function Table({ data }: { data?: IAnimeData[] }) {
   const Cell = ({ index, style }: { index: number; style: any }) => {
     return <ItemComponent animesData={data ? data : animeList} index={index} style={style} />
   }
+
+  useEffect(() => {
+    if (inputSearch.length > 0) {
+      setAnimeList(
+        baseAnimesList.filter(anime => {
+          const name = anime.name.toLocaleLowerCase()
+          return name.includes(inputSearch.toLocaleLowerCase())
+        }),
+      )
+    } else setAnimeList(baseAnimesList)
+  }, [inputSearch])
 
   return (
     <div className="w-full min-w-[650px] my-5 border-separate border-spacing-0 border rounded-lg overflow-hidden">

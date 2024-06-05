@@ -1,6 +1,19 @@
 import ButtonDelete from '../../Common/DeleteButton'
+import { ChangeEvent, useContext } from 'react'
+import { AnimeContext } from '../../../Context/animeListContext'
+import Search, { SearchProps } from 'antd/es/input/Search'
 
 function LayoutHeader() {
+  const { setInputSearch } = useContext(AnimeContext)
+
+  const onSearch: SearchProps['onSearch'] = (value, _e, _info) => {
+    setInputSearch(value)
+  }
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputSearch(e.target.value)
+  }
+
   return (
     <header className="w-full flex flex-col gap-8">
       <section className="w-full flex justify-between items-center">
@@ -16,7 +29,16 @@ function LayoutHeader() {
           />
         </figure>
       </section>
-      <section>
+      <section className="w-full flex gap-3">
+        <Search
+          placeholder="Pesquise um anime"
+          allowClear
+          size="large"
+          style={{ width: '250px' }}
+          enterButton
+          onSearch={onSearch}
+          onChange={onChange}
+        />
         <ButtonDelete />
       </section>
     </header>
